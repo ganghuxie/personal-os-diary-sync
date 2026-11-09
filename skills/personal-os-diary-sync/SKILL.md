@@ -37,12 +37,14 @@ The user records naturally and sends `收工` when the day is finished. Do not r
 ## Onboarding behavior
 
 1. Read the repository and current environment before asking questions.
-2. Confirm that two separate ChatGPT projects named `Personal OS` and `Personal Brain` already exist. If either is missing, guide the user to create the empty project before continuing; do not silently substitute or merge projects. Obtain both real project IDs dynamically. Never copy an example ID from documentation. Formal Personal Brain metadata must say `Personal Brain`.
+2. Confirm that two separate ChatGPT projects named `Personal OS` and `Personal Brain` already exist. If either is missing, guide the user through creating the empty project before continuing; do not silently substitute or merge projects. Obtain both real project IDs dynamically when the environment exposes them. Never copy an example ID from documentation. Formal Personal Brain metadata must say `Personal Brain`.
 3. Inspect connected Google Drive access, the candidate Obsidian Vault, existing PAM code/config/state/logs, and Windows scheduled tasks.
 4. Preserve working components. Do not create duplicate automations, Google Docs, routes, or scheduled tasks. Both projects use the single formal local task `PersonalAI-PAMDriveSync`.
 5. Ask only when the system cannot safely identify the Vault, authentication is required, multiple candidates conflict, or the next action would overwrite personal data, expand permissions, or modify an important system task.
 6. Test in isolated directories or with `test_only: true` before production admission.
 7. Continue through implementation, tests, rerun, and read-back without asking the user to carry execution feedback between apps.
+
+Project instructions are not universally writable from an ordinary ChatGPT chat. When project-settings write access or authorized computer use is available, install both instruction assets and read them back. Otherwise, give the user the two exact asset links and ask for one paste into each project's `Project settings → Instructions`; never claim the rules were installed merely because the repository was read.
 
 ## Shared non-negotiable rules
 
