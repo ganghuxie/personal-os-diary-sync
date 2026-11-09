@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "personal-os-diary-sync",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Configure and maintain the paired Personal OS and Personal Brain workflows from ChatGPT through Google Drive and PAM formal admission into Obsidian.",
   "author": {
     "name": "Personal OS"
