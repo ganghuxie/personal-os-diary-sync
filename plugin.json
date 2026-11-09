@@ -1,0 +1,21 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "personal-os-diary-sync",
+  "version": "0.2.0",
+  "description": "Configure and maintain the paired Personal OS and Personal Brain workflows from ChatGPT through Google Drive and PAM formal admission into Obsidian.",
+  "author": {
+    "name": "Personal OS"
+  },
+  "extensions": {
+    "com.openai": {
+      "onboardingSkill": "./skills/personal-os-diary-sync/SKILL.md",
+      "interface": {
+        "displayName": "Personal OS + Personal Brain",
+        "shortDescription": "把 ChatGPT 日记与知识沉淀同步到 Obsidian",
+        "longDescription": "安装、配置、测试并维护 Personal OS RAW/DAILY 与 Personal Brain RAW/BRAIN 的 Google Drive、PAM 正式准入和 Obsidian 同步流程。",
+        "category": "Productivity"
+      }
+    }
+  }
+}
+

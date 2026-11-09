@@ -1,0 +1,5 @@
+interface:
+  display_name: "Personal OS + Personal Brain"
+  short_description: "把 ChatGPT 日记与知识沉淀同步到 Obsidian"
+  default_prompt: "使用 $personal-os-diary-sync 安装并验收我的 Personal OS 与 Personal Brain。"
+

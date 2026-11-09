@@ -1,0 +1,21 @@
+{
+  "name": "personal-os",
+  "interface": {
+    "displayName": "Personal OS"
+  },
+  "plugins": [
+    {
+      "name": "personal-os-diary-sync",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
+
