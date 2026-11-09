@@ -2,14 +2,15 @@
 
 ## 用户只需要做什么
 
-1. 把本仓库 GitHub 链接发给 ChatGPT/Codex。
-2. 发送：
+1. 先在 ChatGPT 创建两个空项目，名称分别为 `Personal OS` 和 `Personal Brain`。
+2. 把本仓库 GitHub 链接发给 ChatGPT/Codex。
+3. 发送：
 
 ```text
-请按这个仓库的安装说明安装并配置 Personal OS 与 Personal Brain。把仓库中的 V2.3 和 V2.0 完整项目说明分别写入对应 ChatGPT 项目，自动读取两个真实 project ID；能自动读取的配置直接读取，只有账号授权、私人健康目标、Google Drive 连接和 Obsidian Vault 路径无法确认时再问我。完成后按仓库验收清单实测两个项目，不要把配置成功当成已同步成功。
+请按这个仓库的安装说明安装并配置 Personal OS 与 Personal Brain。先检查我是否已创建这两个 ChatGPT 项目；缺少时引导我创建。把仓库中的 Personal OS V2.3 和 Personal Brain V2.0 完整项目说明分别写入对应项目，自动读取两个真实 project ID；能自动读取的配置直接读取，只有账号授权、Google Drive 连接、Obsidian Vault 路径或重要系统修改无法确认时再问我。完成后按仓库验收清单实测两个项目，不要把配置成功当成已同步成功。
 ```
 
-3. 在系统要求时确认 GitHub 安装、Google Drive 登录和本地文件访问。
+4. 在系统要求时确认 GitHub 安装、Google Drive 登录和本地文件访问。
 
 ## ChatGPT/Codex 应如何处理这个链接
 
@@ -45,7 +46,6 @@
 - 哪个目录是正式 Obsidian Vault；
 - 是否允许完成 Google Drive/rclone 登录；
 - 是否允许创建或修改正式 Windows 计划任务；
-- 是否填写 Personal OS 的私人健康目标和背景；
 - 多个同名项目、Vault、Google Docs 或任务之间应选择哪一个。
 
 不得让用户在 ChatGPT、Codex 和 Obsidian 之间人工复制运行反馈；能通过工具、文件和日志回读的结果由安装流程自行取得。
