@@ -26,14 +26,23 @@ Personal Brain 项目聊天
 → Obsidian：Personal-Brain/Raw 与 Personal-Brain/BRAIN
 ```
 
-两个项目的 RAW 都只保存用户原始输入。Personal OS 的 DAILY 保存生活记录、健康、财务、行为洞察和行动反馈；Personal Brain 的 BRAIN 保存 Resource、Insight、Knowledge、Idea、Decision、待确认和后续探索。系统负责查重、修订、冲突保护、正式准入、路由和写后回读。
+两个项目的 RAW 都只保存用户原始输入。Personal OS 的 DAILY 保存生活记录、经历与思考、认知观察和行动建议；Personal Brain 的 BRAIN 保存 Resource、Insight、Knowledge、Idea、Decision、待确认和后续探索。系统负责查重、修订、冲突保护、正式准入、路由和写后回读。
+
+## 安装前先准备两个项目
+
+是的，用户需要先在 ChatGPT 中创建两个独立项目，项目名称建议严格使用：
+
+1. `Personal OS`：记录真实生活和日记，生成 RAW/DAILY；
+2. `Personal Brain`：记录知识探索、想法和决策，生成 RAW/BRAIN。
+
+创建空项目即可，不需要先填写说明。安装流程会从项目清单读取两个项目各自的真实 project ID，再把本仓库中的完整项目规则写入对应项目。若缺少项目、出现同名项目或环境不能修改项目说明，安装流程必须停止并明确告诉用户需要完成的唯一人工步骤，不能假装已经配置成功。
 
 ## 最简单的安装方式
 
 把本仓库的 GitHub 链接发给 ChatGPT/Codex，然后只发送这一句话：
 
 ```text
-请按这个仓库的安装说明安装并配置 Personal OS 与 Personal Brain。把仓库中的 V2.3 和 V2.0 完整项目说明分别写入对应 ChatGPT 项目，自动读取两个真实 project ID；能自动读取的配置直接读取，只有账号授权、私人健康目标、Google Drive 连接和 Obsidian Vault 路径无法确认时再问我。完成后按仓库验收清单实测两个项目，不要把配置成功当成已同步成功。
+请按这个仓库的安装说明安装并配置 Personal OS 与 Personal Brain。先检查我是否已创建这两个 ChatGPT 项目；缺少时引导我创建，不能互换或代建错误项目。把仓库中的 Personal OS V2.3 和 Personal Brain V2.0 完整项目说明分别写入对应项目，自动读取两个真实 project ID。能自动读取的配置直接读取，只有账号授权、Google Drive 连接、Obsidian Vault 路径或重要系统修改无法确认时再问我。完成后按仓库验收清单实测两个项目，不要把配置成功当成已同步成功。
 ```
 
 支持仓库插件安装的 ChatGPT/Codex 会读取根目录 `plugin.json`，安装后自动调用 onboarding Skill。Codex 也可以使用内置 `skill-installer` 从本仓库的 `skills/personal-os-diary-sync` 安装。
@@ -46,7 +55,7 @@ Personal Brain 项目聊天
 
 onboarding Skill 会尽量自行完成：
 
-1. 从项目清单中找到 `Personal OS` 和 Personal Brain，并分别取得真实 project ID；不会把示例 ID 固化到代码或互换两个项目。
+1. 先确认用户已经创建 `Personal OS` 和 `Personal Brain` 两个独立项目，再分别取得真实 project ID；不会把示例 ID 固化到代码或互换两个项目。
 2. 把完整的 Personal OS V2.3 和 Personal Brain V2.0 项目说明分别写入并回读核验。
 3. 检查 Google Drive 连接、Obsidian Vault、Python、rclone、现有 PAM 文件、Windows 计划任务和日志。
 4. 保留已经通过验收的实现，不重复创建同名任务或覆盖现有配置。
@@ -88,7 +97,27 @@ onboarding Skill 会尽量自行完成：
 - DAILY 只写入人工日记的 `PAM-DAILY-START/END` 区块；区块外内容不动。
 - 一次运行即使退出码为 0，只要存在正式校验 reject，也必须报告为部分成功。
 
-完整提示词规则见 [Personal OS 规则](skills/personal-os-diary-sync/references/personal-os-rules.md)与 [Personal Brain 规则](skills/personal-os-diary-sync/references/personal-brain-rules.md)。
+完整的 ChatGPT 项目提示词见 [Personal OS V2.3](skills/personal-os-diary-sync/assets/personal-os-project-instructions.md) 与 [Personal Brain V2.0](skills/personal-os-diary-sync/assets/personal-brain-project-instructions.md)。这两份才是需要写入项目设置的完整规则。
+
+[Personal OS 云端补漏归档规则](skills/personal-os-diary-sync/references/personal-os-rules.md) 与 [Personal Brain 云端补漏归档规则](skills/personal-os-diary-sync/references/personal-brain-rules.md) 只用于定时检查 Google Drive 缺漏，不是项目说明。
+
+## 进阶玩法：让 AI 跟进近期目标
+
+基础规则只负责自然记录和日记整理。如果近期有一个明确目标，希望 AI 在日常记录中持续关注，可以把目标加入 `Personal OS` 项目规则。不要改动 RAW/DAILY、YAML、Google Drive 或 Obsidian 协议，只新增一段清楚的目标说明。
+
+例如，未来 30 天准备求职，可以在项目规则的「日常交互原则」后加入：
+
+```text
+### 当前重点目标
+
+目标：未来30天完成简历优化，并且每周至少投递5个合适岗位。
+
+记录：保留我实际提到的投递数量、反馈、阻碍和下一步。未提及表示未记录，不视为0，也不判断为未完成。
+
+跟进：普通聊天不要频繁打断；在 DAILY 的「明日关注」中，最多提出1项与这个目标直接相关、可以执行并能判断是否完成的行动。
+```
+
+目标结束后删除或替换这段即可。也可以换成备考、作品发布、运动习惯等目标；AI 只能根据真实记录判断进度，不能把计划当作完成。
 
 ## 已跑通到什么程度
 
@@ -106,8 +135,8 @@ Personal Brain V2.0 项目说明及 RAW/BRAIN 协议已从实际项目设置回�
 | [SKILL.md](skills/personal-os-diary-sync/SKILL.md) | 安装、配置、维护和排障入口 |
 | [Personal OS 项目说明](skills/personal-os-diary-sync/assets/personal-os-project-instructions.md) | 可直接加入 ChatGPT 项目说明 |
 | [Personal Brain 项目说明](skills/personal-os-diary-sync/assets/personal-brain-project-instructions.md) | 可直接加入 ChatGPT 项目说明 |
-| [Personal OS 规则](skills/personal-os-diary-sync/references/personal-os-rules.md) | 当前云端归档提示词的全部有效规则 |
-| [Personal Brain 规则](skills/personal-os-diary-sync/references/personal-brain-rules.md) | Personal Brain RAW/BRAIN 云端归档规则 |
+| [Personal OS 云端补漏归档规则](skills/personal-os-diary-sync/references/personal-os-rules.md) | 定时检查 RAW/DAILY 是否遗漏，不是项目说明 |
+| [Personal Brain 云端补漏归档规则](skills/personal-os-diary-sync/references/personal-brain-rules.md) | 定时检查 RAW/BRAIN 是否遗漏，不是项目说明 |
 | [本地同步规则](skills/personal-os-diary-sync/references/local-sync.md) | PAM V2.3、本地任务和日记嵌入规则 |
 | [验收清单](skills/personal-os-diary-sync/references/acceptance.md) | 判断每一层是否真的完成 |
 | [隐私规则](skills/personal-os-diary-sync/references/privacy.md) | GitHub 发布和日志脱敏 |
