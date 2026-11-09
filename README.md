@@ -42,7 +42,13 @@ Personal Brain 项目聊天
 
 1. 打开 ChatGPT，在左侧边栏找到“项目”。
 2. 点击“项目”右侧的 `+`；如果界面显示“新建项目”，点击“新建项目”。
+
+![点击项目右侧的加号创建项目](docs/images/01-create-project-button.jpg)
+
 3. 输入项目名称 `Personal OS`，然后点击“创建项目”。记忆设置保持默认即可。
+
+![将项目命名为 Personal OS](docs/images/02-name-personal-os.jpg)
+
 4. 再次点击 `+`，创建第二个项目 `Personal Brain`。
 5. 确认左侧边栏能够分别看到这两个项目，不要把两套规则放在同一个项目里。
 
@@ -61,6 +67,19 @@ Personal Brain 项目聊天
 - **不能自动填写：** 普通 ChatGPT 网页聊天通常不能仅凭一个 GitHub 链接修改自己或其他项目的设置。这种情况下，AI 应明确说明限制，并让用户分别把 [Personal OS V2.3](skills/personal-os-diary-sync/assets/personal-os-project-instructions.md) 和 [Personal Brain V2.0](skills/personal-os-diary-sync/assets/personal-brain-project-instructions.md) 中代码块内的完整内容粘贴到对应项目的“项目设置 → 说明”中。这是两次粘贴，不需要用户转抄运行日志。
 
 无论使用哪种方式，都必须在写入后重新打开项目设置核对，不能把“已经读取 GitHub”当成“项目规则已经安装”。
+
+### 无法自动填写时，手动配置项目规则
+
+1. 在左侧边栏找到 `Personal OS`，点击项目名称右侧的 `…`，选择“项目设置”。
+
+![打开 Personal OS 的项目设置](docs/images/03-open-project-settings.jpg)
+
+2. 在“说明”输入框中，粘贴 [Personal OS V2.3 完整项目说明](skills/personal-os-diary-sync/assets/personal-os-project-instructions.md) 代码块内的全部内容，然后保存。
+
+![把完整规则粘贴到项目说明](docs/images/04-paste-project-instructions.jpg)
+
+3. 对 `Personal Brain` 重复相同步骤，粘贴 [Personal Brain V2.0 完整项目说明](skills/personal-os-diary-sync/assets/personal-brain-project-instructions.md)。
+4. 重新打开两个项目的“项目设置”，确认说明开头分别为 `# Personal OS｜个人生活与目标管理系统 V2.3` 和 `# Personal Brain｜个人知识与认知管理系统 V2.0`。
 
 ## 最简单的安装方式
 
