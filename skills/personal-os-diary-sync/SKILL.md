@@ -37,7 +37,7 @@ The user records naturally and sends `收工` when the day is finished. Do not r
 ## Onboarding behavior
 
 1. Read the repository and current environment before asking questions.
-2. Use the available project list to find `Personal OS` and the user's Personal Brain project; obtain both real project IDs dynamically. Never copy an example ID from documentation. Formal Personal Brain metadata must say `Personal Brain` even if the UI project label is `Personal brain`.
+2. Confirm that two separate ChatGPT projects named `Personal OS` and `Personal Brain` already exist. If either is missing, guide the user to create the empty project before continuing; do not silently substitute or merge projects. Obtain both real project IDs dynamically. Never copy an example ID from documentation. Formal Personal Brain metadata must say `Personal Brain`.
 3. Inspect connected Google Drive access, the candidate Obsidian Vault, existing PAM code/config/state/logs, and Windows scheduled tasks.
 4. Preserve working components. Do not create duplicate automations, Google Docs, routes, or scheduled tasks. Both projects use the single formal local task `PersonalAI-PAMDriveSync`.
 5. Ask only when the system cannot safely identify the Vault, authentication is required, multiple candidates conflict, or the next action would overwrite personal data, expand permissions, or modify an important system task.
