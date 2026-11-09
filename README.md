@@ -1,13 +1,21 @@
 # Personal OS + Personal Brain：ChatGPT 同步到 Obsidian
 
-> 很难坚持写日记，通常不是因为不想记录，而是记录太耗时。
+> 不需要专门坐下来写日记。打开 ChatGPT，点一下语音转文字，想到什么就说什么。
 
-传统日记需要专门打开软件、回忆一天、组织语言、排版和分类。忙起来，这件事最容易被放弃。但在 AI 时代，长期、真实、可追溯的个人记录，正是让 AI 逐渐理解你的重要数据。
+很多人很难坚持写日记，不是因为没有内容，而是传统写日记需要专门腾出时间：回忆一天、组织语言、排版和分类。忙起来，最先被放弃的往往就是记录。
 
-这套流程把记录动作缩短成两件事：
+这套流程把写日记变成随手聊天：
 
-1. 生活记录放进 `Personal OS`，知识探索、想法和决策放进 `Personal Brain`；
-2. 当天记录结束时发送“收工”。
+1. 在手机或电脑上打开 ChatGPT，用语音转文字直接说，或者随手打字；
+2. 经历、情绪、工作、人际关系和突然冒出的想法，想到什么就发什么，不需要整理格式；
+3. 当天记录结束后，只发送一句“收工”；
+4. ChatGPT 自动保留当天原始记录，并整理成结构清楚、可以直接阅读的当天日记。
+
+真正降低门槛的地方，不是让 AI 替你编日记，而是把“专门写一篇日记”变成“随时说几句话”。你负责真实记录，AI 负责整理、排版和复盘。
+
+在 AI 时代，长期、真实、可追溯的个人数据，会逐渐成为理解自己的重要资产。这套流程继续把每天的 RAW 和 DAILY 经过 Google Drive、PAM 正式准入自动同步到 Obsidian，让零散聊天沉淀成可以搜索、复盘、修订并供 AI 长期分析的个人资产。
+
+生活记录放进 `Personal OS`；知识探索、想法和决策放进 `Personal Brain`。两个项目都在当天结束时使用“收工”。
 
 之后按已经跑通的链路处理：
 
@@ -30,12 +38,29 @@ Personal Brain 项目聊天
 
 ## 安装前先准备两个项目
 
-是的，用户需要先在 ChatGPT 中创建两个独立项目，项目名称建议严格使用：
+用户需要先在 ChatGPT 中创建两个独立项目。创建流程：
+
+1. 打开 ChatGPT，在左侧边栏找到“项目”。
+2. 点击“项目”右侧的 `+`；如果界面显示“新建项目”，点击“新建项目”。
+3. 输入项目名称 `Personal OS`，然后点击“创建项目”。记忆设置保持默认即可。
+4. 再次点击 `+`，创建第二个项目 `Personal Brain`。
+5. 确认左侧边栏能够分别看到这两个项目，不要把两套规则放在同一个项目里。
+
+两个项目的用途：
 
 1. `Personal OS`：记录真实生活和日记，生成 RAW/DAILY；
 2. `Personal Brain`：记录知识探索、想法和决策，生成 RAW/BRAIN。
 
-创建空项目即可，不需要先填写说明。安装流程会从项目清单读取两个项目各自的真实 project ID，再把本仓库中的完整项目规则写入对应项目。若缺少项目、出现同名项目或环境不能修改项目说明，安装流程必须停止并明确告诉用户需要完成的唯一人工步骤，不能假装已经配置成功。
+创建空项目即可。项目建好后，再按下面的安装方式配置规则。
+
+## 能不能只发链接就自动填写项目规则
+
+分两种情况：
+
+- **支持自动填写：** 如果当前 ChatGPT Work、Codex 或桌面环境能够读取项目清单，并且具备修改项目设置或操作浏览器的能力，用户提供本仓库链接和安装提示词后，AI 可以取得两个真实 project ID，把完整规则写入对应项目，再打开项目设置回读核验。过程中仍可能需要用户确认登录、授权或界面操作权限。
+- **不能自动填写：** 普通 ChatGPT 网页聊天通常不能仅凭一个 GitHub 链接修改自己或其他项目的设置。这种情况下，AI 应明确说明限制，并让用户分别把 [Personal OS V2.3](skills/personal-os-diary-sync/assets/personal-os-project-instructions.md) 和 [Personal Brain V2.0](skills/personal-os-diary-sync/assets/personal-brain-project-instructions.md) 中代码块内的完整内容粘贴到对应项目的“项目设置 → 说明”中。这是两次粘贴，不需要用户转抄运行日志。
+
+无论使用哪种方式，都必须在写入后重新打开项目设置核对，不能把“已经读取 GitHub”当成“项目规则已经安装”。
 
 ## 最简单的安装方式
 
@@ -45,7 +70,7 @@ Personal Brain 项目聊天
 请按这个仓库的安装说明安装并配置 Personal OS 与 Personal Brain。先检查我是否已创建这两个 ChatGPT 项目；缺少时引导我创建，不能互换或代建错误项目。把仓库中的 Personal OS V2.3 和 Personal Brain V2.0 完整项目说明分别写入对应项目，自动读取两个真实 project ID。能自动读取的配置直接读取，只有账号授权、Google Drive 连接、Obsidian Vault 路径或重要系统修改无法确认时再问我。完成后按仓库验收清单实测两个项目，不要把配置成功当成已同步成功。
 ```
 
-支持仓库插件安装的 ChatGPT/Codex 会读取根目录 `plugin.json`，安装后自动调用 onboarding Skill。Codex 也可以使用内置 `skill-installer` 从本仓库的 `skills/personal-os-diary-sync` 安装。
+支持仓库插件安装的 ChatGPT/Codex 会读取根目录 `plugin.json`，安装后调用 onboarding Skill。Codex 也可以使用内置 `skill-installer` 从本仓库的 `skills/personal-os-diary-sync` 安装。Skill 能自动完成到哪一步，取决于当前环境实际开放的项目、Google Drive 和本地文件权限。
 
 安装和本机写入仍需要用户确认账号登录、Google Drive 授权和本地文件权限。普通 ChatGPT 网页聊天不能绕过这些授权直接修改 Windows 上的 Obsidian；需要在支持本地文件操作的 Codex 或 ChatGPT 桌面环境中完成本地部分。
 
@@ -53,10 +78,10 @@ Personal Brain 项目聊天
 
 ## 安装后会自动做什么
 
-onboarding Skill 会尽量自行完成：
+在相关权限和工具可用时，onboarding Skill 会尽量自行完成：
 
 1. 先确认用户已经创建 `Personal OS` 和 `Personal Brain` 两个独立项目，再分别取得真实 project ID；不会把示例 ID 固化到代码或互换两个项目。
-2. 把完整的 Personal OS V2.3 和 Personal Brain V2.0 项目说明分别写入并回读核验。
+2. 把完整的 Personal OS V2.3 和 Personal Brain V2.0 项目说明分别写入并回读核验；无法修改项目设置时，退回到两次人工粘贴并明确说明。
 3. 检查 Google Drive 连接、Obsidian Vault、Python、rclone、现有 PAM 文件、Windows 计划任务和日志。
 4. 保留已经通过验收的实现，不重复创建同名任务或覆盖现有配置。
 5. 配置或修订两个项目各自的 Google Drive 归档规则。
