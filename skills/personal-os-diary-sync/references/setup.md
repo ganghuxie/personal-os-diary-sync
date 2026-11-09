@@ -23,7 +23,7 @@ ChatGPT Personal Brain
 
 先执行只读检查：
 
-1. 读取 ChatGPT 项目清单，精确匹配 `Personal OS` 和用户的 Personal Brain 项目，分别取得真实 project ID。Personal Brain 的界面名称可以是 `Personal brain`，但正式元数据名称必须为 `Personal Brain`。没有、重复或无法唯一识别时停止并请用户确认。
+1. 读取 ChatGPT 项目清单，精确匹配 `Personal OS` 和 `Personal Brain`，分别取得真实 project ID。用户必须先创建两个独立项目；缺少时引导用户创建空项目后再继续，不得把一个项目同时用于两套规则。重复或无法唯一识别时停止并请用户确认。
 2. 检查 Google Drive 是否已连接。若未连接，只请求完成所需登录和最小权限，不读取无关文件。
 3. 搜索当前工作区、用户提供的知识库目录和 Obsidian 配置，识别正式 Vault。多个候选时请用户选择，不猜测。
 4. 检查 Python、rclone、PowerShell、现有 `PAM-Drive-Sync`、状态、日志和 Windows 任务。
@@ -31,7 +31,7 @@ ChatGPT Personal Brain
 
 ## 第二步：配置 ChatGPT 项目
 
-1. 将 `assets/personal-os-project-instructions.md` 中的安装变量替换为用户真实 Personal OS project ID，以及用户自愿提供的健康目标和背景；未提供私人健康信息时删除对应句子，不得猜测。
+1. 将 `assets/personal-os-project-instructions.md` 中的安装变量替换为用户真实 Personal OS project ID。该版本只处理日记记录，不添加健康、饮食、账单管理规则。
 2. 将解析后的完整内容写入 `Personal OS` 项目说明，不得摘要或遗漏章节。
 3. 将 `assets/personal-brain-project-instructions.md` 中的 project ID 替换为用户真实 Personal Brain project ID，并把完整内容写入该项目说明。
 4. 写入后重新打开两个项目设置，回读项目说明，核验版本标题、项目 ID、文档类型、H1、YAML 字段、Google Docs 命名和 Obsidian 目录。
