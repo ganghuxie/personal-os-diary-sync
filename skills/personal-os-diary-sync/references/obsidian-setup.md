@@ -32,6 +32,16 @@
 4. 安装后实际启动 Obsidian并读取可验证的版本或应用状态。
 5. 下载完成但没有安装、安装完成但没有启动，必须分别报告，不合并为“已完成”。
 
+本仓库提供 `scripts/bootstrap_obsidian.ps1`。在 Windows、用户已经授权安装且 Vault 绝对路径明确时，优先使用它执行可回读的安装与目录初始化：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/bootstrap_obsidian.ps1 -VaultPath "<ABSOLUTE_VAULT_PATH>" -InstallObsidian
+```
+
+脚本会先通过 WinGet 实时核验 `Obsidian.Obsidian`，再安装、创建缺失目录、启动应用并输出 JSON。若 WinGet 不可用，回到 Obsidian 官方安装包流程。不要为了绕过系统限制而下载第三方安装包。
+
+`-ExecutionPolicy Bypass` 只作用于这一次脚本进程，不得修改机器的持久执行策略。调用脚本前仍需遵守当前环境的权限审批。
+
 ## 创建或选择 Vault
 
 如果用户已经给出 Vault 路径，先解析为绝对路径并确认目录位于用户授权范围内。
@@ -39,6 +49,8 @@
 如果全新环境没有 Vault，安装提示词已授权创建且用户没有指定路径，可以在当前用户的 Documents 目录下提出一个清楚的默认 Vault 路径；执行前向用户显示该路径。路径有异议、存在同名目录或发现其他 Vault 时停止并请用户选择。
 
 创建空目录后，用 Obsidian 的“打开文件夹作为仓库”将它注册为 Vault。不要手工伪造 `.obsidian` 配置来冒充已经打开。
+
+脚本返回 `status: prepared` 只表示应用和目录准备完成。必须继续在 Obsidian 中打开该 Vault；不能把 `prepared` 报告为已经正式同步。
 
 ## 必需目录
 

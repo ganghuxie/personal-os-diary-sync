@@ -128,7 +128,7 @@ Personal-Brain/Weekly
 5. Obsidian 中能够打开对应文件，并且本地回读内容正确；
 6. 重复运行不会重复创建或覆盖人工内容。
 
-安装器会先检查现有 Obsidian 和 Vault。已有 Vault 时不会另建平行知识库，也不会在未确认的情况下覆盖已有个人目录；缺少 Obsidian 时，按 [Obsidian 安装与 Vault 初始化](skills/personal-os-diary-sync/references/obsidian-setup.md) 执行。
+安装器会先检查现有 Obsidian 和 Vault。已有 Vault 时不会另建平行知识库，也不会在未确认的情况下覆盖已有个人目录；缺少 Obsidian 时，按 [Obsidian 安装与 Vault 初始化](skills/personal-os-diary-sync/references/obsidian-setup.md) 执行。仓库内置的 [Windows 初始化脚本](skills/personal-os-diary-sync/scripts/bootstrap_obsidian.ps1) 会在获得授权后核验官方 WinGet 包、安装 Obsidian、创建目录、启动应用并返回 JSON 结果。
 
 详细安装边界见 [INSTALL.md](INSTALL.md)。
 

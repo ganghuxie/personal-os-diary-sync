@@ -29,6 +29,14 @@
 
 完整要求见 `skills/personal-os-diary-sync/references/obsidian-setup.md`。
 
+Windows 环境可在用户已经授权安装并确认 Vault 路径后调用：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File skills/personal-os-diary-sync/scripts/bootstrap_obsidian.ps1 -VaultPath "<ABSOLUTE_VAULT_PATH>" -InstallObsidian
+```
+
+脚本返回 `prepared` 只代表软件与目录已准备好，不代表 PAM、Obsidian 路由或无人值守任务已经实跑。
+
 ## 项目规则能否自动填写
 
 只有当前环境实际具备项目设置写入能力或经过授权的浏览器操作能力时，才能自动把两份规则填入项目并回读核验。
