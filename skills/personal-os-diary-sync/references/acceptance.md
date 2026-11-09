@@ -5,6 +5,8 @@
 | 状态 | 最低证据 |
 |---|---|
 | 聊天来源已读取 | 目标日期、聊天范围、user message 数量、附件边界和完整性 |
+| Obsidian 已安装 | 应用安装状态、可执行文件或版本，并且实际启动成功 |
+| Vault 已初始化 | 唯一绝对路径、Obsidian 已打开该 Vault、必需目录逐一回读 |
 | Google Drive 已写入 | 对应项目的精确标题、唯一文件 ID、正文和正式字段写后回读 |
 | PAM 已正式准入 | 对应文档正式校验通过；reject 单独列出 |
 | Obsidian 已路由 | 路由器结果和预期 Personal OS 或 Personal Brain 正式路径 |
@@ -18,10 +20,12 @@
 
 1. 已从当前项目清单分别取得 Personal OS 与 Personal Brain 的真实 project ID；没有互换或复制示例值。
 2. 已回读两个项目的完整项目说明：Personal OS 为 V2.3、Personal Brain 为 V2.0；正式元数据名称、文档类型、H1、YAML 和目录与模板一致。
-3. Personal OS 云端自动化名称为 `Personal OS Google Drive 补漏归档 V2.3`，每周一北京时间 10:00。
-4. 旧版直接写 Vault 的自动化未启用。
-5. 本地正式任务只保留 `PersonalAI-PAMDriveSync`，每天 02:00、登录后 1 分钟、禁止并发、失败重试最多 3 次。
-6. Google Drive 连接、Vault、staging、state、logs、backup 和 conflict 路径均已解析到用户自己的环境。
+3. Obsidian 已安装并实际启动；没有安装时不能把普通 Markdown 文件夹称为 Obsidian Vault 已就绪。
+4. 正式 Vault 已创建或唯一选定，`Personal-OS/Raw`、`Personal-OS/Daily`、`Personal-OS/Weekly`、`Personal-Brain/Raw`、`Personal-Brain/BRAIN`、`Personal-Brain/Weekly` 和 `04-Life/Daily` 均已回读。
+5. Personal OS 云端自动化名称为 `Personal OS Google Drive 补漏归档 V2.3`，每周一北京时间 10:00。
+6. 旧版直接写 Vault 的自动化未启用。
+7. 本地正式任务只保留 `PersonalAI-PAMDriveSync`，每天 02:00、登录后 1 分钟、禁止并发、失败重试最多 3 次。
+8. Google Drive 连接、Vault、staging、state、logs、backup 和 conflict 路径均已解析到用户自己的环境。
 
 ## 文档验收
 
@@ -51,6 +55,8 @@
 只使用这些明确状态：
 
 - 已配置、未实跑。
+- Obsidian 已安装并启动；Vault 尚未创建。
+- Vault 与必需目录已创建并回读；PAM 尚未实跑。
 - Google Drive 已写入并回读；PAM 未运行。
 - PAM 正式准入通过；Obsidian 路由失败。
 - Obsidian 已路由并完成本地回读。

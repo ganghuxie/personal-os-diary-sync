@@ -6,14 +6,28 @@
 2. 创建第一个空项目，名称为 `Personal OS`，记忆设置保持默认。
 3. 再次点击 `+`，创建第二个空项目，名称为 `Personal Brain`。
 4. 确认两个项目都出现在左侧边栏，不要把两套规则放进同一个项目。
-5. 把本仓库 GitHub 链接发给 ChatGPT/Codex。
-6. 发送：
+5. 打开 ChatGPT 桌面版的新窗口或新聊天，在顶部选择“工作”。如果系统提供本地与云端选择，使用能够访问这台 Windows 电脑的本地工作方式。
+6. 把本仓库 GitHub 链接发给这个工作模式聊天。
+7. 发送：
 
 ```text
-请按这个仓库的安装说明安装并配置 Personal OS 与 Personal Brain。先检查我是否已创建这两个 ChatGPT 项目；缺少时引导我创建。把仓库中的 Personal OS V2.3 和 Personal Brain V2.0 完整项目说明分别写入对应项目，自动读取两个真实 project ID；能自动读取的配置直接读取，只有账号授权、Google Drive 连接、Obsidian Vault 路径或重要系统修改无法确认时再问我。完成后按仓库验收清单实测两个项目，不要把配置成功当成已同步成功。
+请按这个仓库的安装说明安装并配置 Personal OS 与 Personal Brain。先检查我是否已创建这两个 ChatGPT 项目；缺少时引导我创建。把仓库中的 Personal OS V2.3 和 Personal Brain V2.0 完整项目说明分别写入对应项目，并读取两个真实 project ID。检查这台 Windows 电脑是否已安装 Obsidian；如果没有，我授权你从 Obsidian 官方来源下载安装，并在执行前告诉我安装来源和默认 Vault 路径；如果我没有提出异议，继续创建 Vault 及仓库规定的 Personal OS、Personal Brain 和日记目录。能自动读取的配置直接读取，只有账号授权、Google Drive 连接、Vault 路径冲突、已有个人数据可能被覆盖或重要系统修改无法确认时再问我。完成后按仓库验收清单实测两个项目，不要把软件已安装、规则已配置或文件夹已创建当成同步已经跑通。
 ```
 
-7. 在系统要求时确认 GitHub 安装、Google Drive 登录和本地文件访问。
+8. 在系统要求时确认 GitHub 安装、Google Drive 登录、本地文件访问和 Obsidian 安装。
+
+## Obsidian 尚未安装时
+
+安装流程必须先检查，不重复安装。确认缺失后：
+
+1. 只使用 Obsidian 官方下载页或经核验的系统包管理器来源；
+2. 安装完成后实际启动 Obsidian；
+3. 创建或选择 Vault，已有 Vault 时优先复用，不静默另建；
+4. 创建 `Personal-OS/Raw`、`Personal-OS/Daily`、`Personal-OS/Weekly`、`Personal-Brain/Raw`、`Personal-Brain/BRAIN`、`Personal-Brain/Weekly` 和 `04-Life/Daily`；
+5. 回读目录，并在 Obsidian 中确认 Vault 可以打开；
+6. 再继续 PAM 与 Windows 计划任务配置。
+
+完整要求见 `skills/personal-os-diary-sync/references/obsidian-setup.md`。
 
 ## 项目规则能否自动填写
 

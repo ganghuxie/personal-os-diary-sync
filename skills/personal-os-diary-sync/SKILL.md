@@ -30,6 +30,7 @@ The user records naturally and sends `收工` when the day is finished. Do not r
 - For Personal OS cloud automation creation or repair, read [references/personal-os-rules.md](references/personal-os-rules.md).
 - For Personal Brain cloud automation creation or repair, read [references/personal-brain-rules.md](references/personal-brain-rules.md).
 - For the Windows PAM V2.3 implementation, scheduled tasks, routing, or DAILY embedding, read [references/local-sync.md](references/local-sync.md).
+- When Obsidian is missing, no Vault is configured, or required directories do not exist, read [references/obsidian-setup.md](references/obsidian-setup.md) before local sync work.
 - Before claiming success, read [references/acceptance.md](references/acceptance.md).
 - Before publishing or sharing, read [references/privacy.md](references/privacy.md) and run `scripts/privacy_scan.py` at the repository root.
 - When updating ChatGPT project instructions, install both [Personal OS V2.3](assets/personal-os-project-instructions.md) and [Personal Brain V2.0](assets/personal-brain-project-instructions.md). Resolve only the documented installation variables; do not summarize or rewrite the formal rules.
@@ -38,11 +39,12 @@ The user records naturally and sends `收工` when the day is finished. Do not r
 
 1. Read the repository and current environment before asking questions.
 2. Confirm that two separate ChatGPT projects named `Personal OS` and `Personal Brain` already exist. If either is missing, guide the user through creating the empty project before continuing; do not silently substitute or merge projects. Obtain both real project IDs dynamically when the environment exposes them. Never copy an example ID from documentation. Formal Personal Brain metadata must say `Personal Brain`.
-3. Inspect connected Google Drive access, the candidate Obsidian Vault, existing PAM code/config/state/logs, and Windows scheduled tasks.
-4. Preserve working components. Do not create duplicate automations, Google Docs, routes, or scheduled tasks. Both projects use the single formal local task `PersonalAI-PAMDriveSync`.
-5. Ask only when the system cannot safely identify the Vault, authentication is required, multiple candidates conflict, or the next action would overwrite personal data, expand permissions, or modify an important system task.
-6. Test in isolated directories or with `test_only: true` before production admission.
-7. Continue through implementation, tests, rerun, and read-back without asking the user to carry execution feedback between apps.
+3. Inspect connected Google Drive access, whether Obsidian is installed, candidate Vaults, existing PAM code/config/state/logs, and Windows scheduled tasks.
+4. If Obsidian is missing and the user's installation prompt explicitly authorizes installation, install it only from an official or verified platform source, then create or select a Vault and the required directories according to `references/obsidian-setup.md`. If installation was not explicitly authorized, ask before downloading or installing software.
+5. Preserve working components. Do not create duplicate automations, Google Docs, routes, Vaults, or scheduled tasks. Both projects use the single formal local task `PersonalAI-PAMDriveSync`.
+6. Ask only when the system cannot safely identify the Vault, authentication is required, multiple candidates conflict, or the next action would overwrite personal data, expand permissions, or modify an important system task.
+7. Test in isolated directories or with `test_only: true` before production admission.
+8. Continue through implementation, tests, rerun, and read-back without asking the user to carry execution feedback between apps.
 
 Project instructions are not universally writable from an ordinary ChatGPT chat. When project-settings write access or authorized computer use is available, install both instruction assets and read them back. Otherwise, give the user the two exact asset links and ask for one paste into each project's `Project settings → Instructions`; never claim the rules were installed merely because the repository was read.
 
@@ -74,12 +76,14 @@ Project instructions are not universally writable from an ordinary ChatGPT chat.
 Report these separately and only with direct evidence:
 
 1. ChatGPT source read.
-2. Google Drive RAW/DAILY or RAW/BRAIN written and read back.
-3. PAM formal admission passed or rejected.
-4. Obsidian routed.
-5. Local files read back.
-6. Identical rerun returned no change.
-7. `PersonalAI-PAMDriveSync` completed a real unattended trigger.
+2. Obsidian application installed and launched, or not installed.
+3. Vault created/selected and required directories read back.
+4. Google Drive RAW/DAILY or RAW/BRAIN written and read back.
+5. PAM formal admission passed or rejected.
+6. Obsidian routed.
+7. Local files read back.
+8. Identical rerun returned no change.
+9. `PersonalAI-PAMDriveSync` completed a real unattended trigger.
 
 List all rejects, conflicts, incomplete sources, and unverified stages.
 

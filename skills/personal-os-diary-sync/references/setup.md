@@ -25,7 +25,7 @@ ChatGPT Personal Brain
 
 1. 读取 ChatGPT 项目清单，精确匹配 `Personal OS` 和 `Personal Brain`，分别取得真实 project ID。用户必须先创建两个独立项目；缺少时引导用户创建空项目后再继续，不得把一个项目同时用于两套规则。重复或无法唯一识别时停止并请用户确认。
 2. 检查 Google Drive 是否已连接。若未连接，只请求完成所需登录和最小权限，不读取无关文件。
-3. 搜索当前工作区、用户提供的知识库目录和 Obsidian 配置，识别正式 Vault。多个候选时请用户选择，不猜测。
+3. 检查 Obsidian 是否已经安装并能够启动；再搜索当前工作区、用户提供的知识库目录和 Obsidian 配置，识别正式 Vault。多个候选时请用户选择，不猜测。缺少 Obsidian 或 Vault 时读取 `obsidian-setup.md`。
 4. 检查 Python、rclone、PowerShell、现有 `PAM-Drive-Sync`、状态、日志和 Windows 任务。
 5. 查找同名自动化与任务。保留已有正式 `PersonalAI-PAMDriveSync`；如果存在 `PersonalAI-PAMDriveSync2`，保持禁用且不删除。发现其他旧版、重复或冲突项时只报告，暂停或修改前遵守授权边界。
 
@@ -56,6 +56,8 @@ ChatGPT Personal Brain
 如用户要求 Personal Brain 自动补漏归档，使用 `references/personal-brain-rules.md` 创建或修订独立的 Personal Brain 云端自动化。它只能写 PAM-BRAIN RAW/BRAIN Google Docs，不能复用 Personal OS project ID，不能直接写 Vault。创建后同样回读目标项目、完整提示词和状态。
 
 ## 第四步：配置本地 PAM
+
+先完成 `obsidian-setup.md` 的安装与 Vault 核验。Obsidian 未安装、Vault 未明确或必需目录未回读时，不得声称本地链路已经跑通。
 
 当前参考实现需要同时识别 Personal OS 与 Personal Brain 的正式元数据：
 

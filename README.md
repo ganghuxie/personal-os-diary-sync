@@ -59,6 +59,17 @@ Personal Brain 项目聊天
 
 创建空项目即可。项目建好后，再按下面的安装方式配置规则。
 
+## 打开新窗口，切换到工作模式
+
+1. 使用 ChatGPT 桌面版打开一个新窗口或新聊天。
+2. 在页面顶部从“聊天”切换到“工作”。
+3. 如果系统询问运行位置或电脑访问权限，选择能够访问这台 Windows 电脑、本地文件和应用的本地工作方式。
+4. 把下方安装提示词和本仓库 GitHub 链接一起发送。
+
+![在新窗口切换到工作模式](docs/images/05-switch-to-work-mode.jpg)
+
+只选择“工作”不代表一定获得了本地电脑权限。网页端或云端 Work 可以读取公开 GitHub，但不能直接在用户电脑上安装 Obsidian、创建 Vault 或配置 Windows 计划任务。完成本地安装需要 ChatGPT 桌面端实际开放本地文件或电脑操作能力。
+
 ## 能不能只发链接就自动填写项目规则
 
 分两种情况：
@@ -86,12 +97,38 @@ Personal Brain 项目聊天
 把本仓库的 GitHub 链接发给 ChatGPT/Codex，然后只发送这一句话：
 
 ```text
-请按这个仓库的安装说明安装并配置 Personal OS 与 Personal Brain。先检查我是否已创建这两个 ChatGPT 项目；缺少时引导我创建，不能互换或代建错误项目。把仓库中的 Personal OS V2.3 和 Personal Brain V2.0 完整项目说明分别写入对应项目，自动读取两个真实 project ID。能自动读取的配置直接读取，只有账号授权、Google Drive 连接、Obsidian Vault 路径或重要系统修改无法确认时再问我。完成后按仓库验收清单实测两个项目，不要把配置成功当成已同步成功。
+请按这个仓库的安装说明安装并配置 Personal OS 与 Personal Brain。先检查我是否已创建这两个 ChatGPT 项目；缺少时引导我创建，不能互换或代建错误项目。把仓库中的 Personal OS V2.3 和 Personal Brain V2.0 完整项目说明分别写入对应项目，并读取两个真实 project ID。检查这台 Windows 电脑是否已安装 Obsidian：如果没有，我授权你从 Obsidian 官方来源下载安装，并在执行前告诉我安装来源和默认 Vault 路径；如果我没有提出异议，继续创建 Vault 及仓库规定的 Personal OS、Personal Brain 和日记目录。能自动读取的配置直接读取，只有账号授权、Google Drive 连接、Vault 路径冲突、已有个人数据可能被覆盖或重要系统修改无法确认时再问我。完成后按仓库验收清单实测两个项目，不要把软件已安装、规则已配置或文件夹已创建当成同步已经跑通。
 ```
 
 支持仓库插件安装的 ChatGPT/Codex 会读取根目录 `plugin.json`，安装后调用 onboarding Skill。Codex 也可以使用内置 `skill-installer` 从本仓库的 `skills/personal-os-diary-sync` 安装。Skill 能自动完成到哪一步，取决于当前环境实际开放的项目、Google Drive 和本地文件权限。
 
 安装和本机写入仍需要用户确认账号登录、Google Drive 授权和本地文件权限。普通 ChatGPT 网页聊天不能绕过这些授权直接修改 Windows 上的 Obsidian；需要在支持本地文件操作的 Codex 或 ChatGPT 桌面环境中完成本地部分。
+
+## 没有安装 Obsidian 能否跑通
+
+同步器的底层产物是 Markdown 文件，因此没有 Obsidian 应用时，技术上仍可以把文件写入普通文件夹；但这只能算“Markdown 已生成”，不能算“Obsidian 已安装、Vault 已创建并完成路由”。
+
+完整跑通至少需要：
+
+1. Obsidian 已从官方来源安装并能够启动；
+2. 已创建或明确选择一个 Vault；
+3. Vault 中存在下面这些目录：
+
+```text
+Personal-OS/Raw
+Personal-OS/Daily
+Personal-OS/Weekly
+Personal-Brain/Raw
+Personal-Brain/BRAIN
+Personal-Brain/Weekly
+04-Life/Daily
+```
+
+4. `PersonalAI-PAMDriveSync` 已把一组真实测试文档正式准入并路由；
+5. Obsidian 中能够打开对应文件，并且本地回读内容正确；
+6. 重复运行不会重复创建或覆盖人工内容。
+
+安装器会先检查现有 Obsidian 和 Vault。已有 Vault 时不会另建平行知识库，也不会在未确认的情况下覆盖已有个人目录；缺少 Obsidian 时，按 [Obsidian 安装与 Vault 初始化](skills/personal-os-diary-sync/references/obsidian-setup.md) 执行。
 
 详细安装边界见 [INSTALL.md](INSTALL.md)。
 
@@ -102,12 +139,13 @@ Personal Brain 项目聊天
 1. 先确认用户已经创建 `Personal OS` 和 `Personal Brain` 两个独立项目，再分别取得真实 project ID；不会把示例 ID 固化到代码或互换两个项目。
 2. 把完整的 Personal OS V2.3 和 Personal Brain V2.0 项目说明分别写入并回读核验；无法修改项目设置时，退回到两次人工粘贴并明确说明。
 3. 检查 Google Drive 连接、Obsidian Vault、Python、rclone、现有 PAM 文件、Windows 计划任务和日志。
-4. 保留已经通过验收的实现，不重复创建同名任务或覆盖现有配置。
-5. 配置或修订两个项目各自的 Google Drive 归档规则。
-6. 配置本地正式任务 `PersonalAI-PAMDriveSync`：每天 02:00、登录后 1 分钟补跑、禁止并发、失败每 5 分钟重试最多 3 次。
-7. 先在隔离测试目录验证，再申请接入正式 Vault。
-8. 实测两个项目的首次同步、重复运行、修订、`incomplete`、重复标题、错误项目/类型和人工编辑冲突。
-9. 分别报告 Google Drive、PAM 正式准入、Obsidian 路由、本地回读和无人值守实跑状态。
+4. Obsidian 缺失时，根据用户在安装提示词中的授权从官方来源安装；创建或选择 Vault，并建立正式目录后回读。
+5. 保留已经通过验收的实现，不重复创建同名任务或覆盖现有配置。
+6. 配置或修订两个项目各自的 Google Drive 归档规则。
+7. 配置本地正式任务 `PersonalAI-PAMDriveSync`：每天 02:00、登录后 1 分钟补跑、禁止并发、失败每 5 分钟重试最多 3 次。
+8. 先在隔离测试目录验证，再申请接入正式 Vault。
+9. 实测两个项目的首次同步、重复运行、修订、`incomplete`、重复标题、错误项目/类型和人工编辑冲突。
+10. 分别报告 Obsidian 安装、Vault 初始化、Google Drive、PAM 正式准入、Obsidian 路由、本地回读和无人值守实跑状态。
 
 ## 日常怎么用
 
@@ -182,6 +220,7 @@ Personal Brain V2.0 项目说明及 RAW/BRAIN 协议已从实际项目设置回�
 | [Personal OS 云端补漏归档规则](skills/personal-os-diary-sync/references/personal-os-rules.md) | 定时检查 RAW/DAILY 是否遗漏，不是项目说明 |
 | [Personal Brain 云端补漏归档规则](skills/personal-os-diary-sync/references/personal-brain-rules.md) | 定时检查 RAW/BRAIN 是否遗漏，不是项目说明 |
 | [本地同步规则](skills/personal-os-diary-sync/references/local-sync.md) | PAM V2.3、本地任务和日记嵌入规则 |
+| [Obsidian 安装与 Vault 初始化](skills/personal-os-diary-sync/references/obsidian-setup.md) | 缺少 Obsidian 时的官方安装、目录创建和核验 |
 | [验收清单](skills/personal-os-diary-sync/references/acceptance.md) | 判断每一层是否真的完成 |
 | [隐私规则](skills/personal-os-diary-sync/references/privacy.md) | GitHub 发布和日志脱敏 |
 
