@@ -2,15 +2,30 @@
 
 ## 用户只需要做什么
 
-1. 先在 ChatGPT 创建两个空项目，名称分别为 `Personal OS` 和 `Personal Brain`。
-2. 把本仓库 GitHub 链接发给 ChatGPT/Codex。
-3. 发送：
+1. 打开 ChatGPT 左侧边栏，在“项目”右侧点击 `+`（或点击“新建项目”）。
+2. 创建第一个空项目，名称为 `Personal OS`，记忆设置保持默认。
+3. 再次点击 `+`，创建第二个空项目，名称为 `Personal Brain`。
+4. 确认两个项目都出现在左侧边栏，不要把两套规则放进同一个项目。
+5. 把本仓库 GitHub 链接发给 ChatGPT/Codex。
+6. 发送：
 
 ```text
 请按这个仓库的安装说明安装并配置 Personal OS 与 Personal Brain。先检查我是否已创建这两个 ChatGPT 项目；缺少时引导我创建。把仓库中的 Personal OS V2.3 和 Personal Brain V2.0 完整项目说明分别写入对应项目，自动读取两个真实 project ID；能自动读取的配置直接读取，只有账号授权、Google Drive 连接、Obsidian Vault 路径或重要系统修改无法确认时再问我。完成后按仓库验收清单实测两个项目，不要把配置成功当成已同步成功。
 ```
 
-4. 在系统要求时确认 GitHub 安装、Google Drive 登录和本地文件访问。
+7. 在系统要求时确认 GitHub 安装、Google Drive 登录和本地文件访问。
+
+## 项目规则能否自动填写
+
+只有当前环境实际具备项目设置写入能力或经过授权的浏览器操作能力时，才能自动把两份规则填入项目并回读核验。
+
+普通 ChatGPT 网页聊天不能保证只凭提示词和 GitHub 链接修改项目设置。无法自动填写时：
+
+1. 打开 `Personal OS` 项目的更多菜单，进入“项目设置”，把 `skills/personal-os-diary-sync/assets/personal-os-project-instructions.md` 代码块内的完整内容粘贴到“说明”。
+2. 打开 `Personal Brain` 项目的更多菜单，进入“项目设置”，把 `skills/personal-os-diary-sync/assets/personal-brain-project-instructions.md` 代码块内的完整内容粘贴到“说明”。
+3. 保存后重新打开两个项目设置，核对版本标题和项目名称。
+
+这是安装流程允许的两次人工粘贴。除此之外，不应要求用户在 ChatGPT、Codex 和 Obsidian 之间转抄运行反馈。
 
 ## ChatGPT/Codex 应如何处理这个链接
 
@@ -18,7 +33,7 @@
 
 1. 把用户提供的 GitHub 仓库链接添加为 marketplace source；仓库清单位于 `.agents/plugins/marketplace.json`。
 2. 读取根目录 `plugin.json` 并安装 `personal-os-diary-sync`。
-3. 运行 `./skills/personal-os-diary-sync/SKILL.md` 指定的 onboarding。
+3. 运行 `./skills/personal-os-diary-sync/SKILL.md` 指定的 onboarding；是否能直接修改项目说明，以当前环境实际提供的权限为准。
 4. 安装后继续当前对话，不要求用户重新复制提示词。
 
 ### Codex 只有 Skill 安装能力时
